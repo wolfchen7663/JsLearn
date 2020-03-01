@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this 的构造原理</title>
+</head>
+<body>
+    <script>
+        function User(name) {
+            this.name = name; // 这里的this 是空的
+        }
+        let cw = new User("cw"); // 此时this 指向 cw
+    </script>
+</body>
+</html>

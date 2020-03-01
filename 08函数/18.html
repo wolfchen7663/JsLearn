@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>call 与 apply</title>
+</head>
+<body>
+    <script>
+        let lisi = {
+            name: "lisi"
+        };
+        let wangwu = {
+            name: "wangwu"
+        };
+        function User(web, url) {
+            console.log(web+url+this.name);
+        }
+
+        User.call(lisi, "houdunren", "www.li.com"); // 普通的传值
+        User.apply(lisi, ["houdunren", "www.baidu.com"]); //以数组的方式传值
+        // call apply 都会立刻执行
+        
+    </script>
+</body>
+</html>

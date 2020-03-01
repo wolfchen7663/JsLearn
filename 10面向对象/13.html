@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性与assign使用</title>
+</head>
+
+<body>
+    <script>
+        // 将数组转换为对象
+        let user = [{
+            category: "js",
+            click: 11
+        }, {
+            category: "css",
+            click: 111
+        }, {
+            category: "php",
+            click: 1111
+        }];
+        let res = user.reduce(function (obj, cur, index) {
+            obj[`${cur.category}-${index+1}`] = cur;
+            return obj;
+        }, {});
+
+        console.log(JSON.stringify(res, null, 2));
+
+        // assign 组合两个类
+        let a = {name:"chen"};
+        let b = {click: 111};
+        let c = Object.assign(a, b);
+        console.log(c);
+
+        function test(params) {
+            let options = {
+                name: "ji"
+            }
+            let new_op = Object.assign(options, params);
+            // let new_op = {...options, ...params};
+            console.log(JSON.stringify(new_op, null, 2));
+        }
+        test({name: "chen", click: 1111});
+    </script>
+</body>
+
+</html>

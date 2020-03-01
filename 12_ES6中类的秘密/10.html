@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在类中使用访问器</title>
+</head>
+
+<body>
+    <script>
+        class Request {
+            constructor(url) {
+                this._host = url;
+            }
+
+            get host() {
+                return this._host;
+            }
+
+            set host(url) {
+                this._host = url;
+            }
+        }
+
+        let r = new Request("www.baidu.com");
+        r.host = "www.laixiezi.com";
+        console.log(r.host);
+    </script>
+</body>
+
+</html>

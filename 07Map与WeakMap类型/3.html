@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历Map数据类型</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        let map = new Map([
+            ["chen", "wei"],
+            ["ji", "lin"]
+        ]);
+
+        console.log(map.keys()); // 返回的是一个包含所有键的对象 {"chen", "ji"}
+        console.log(map.values()); // 返回的是一个包含所有键的对象  {"wei", "lin"}
+        console.log(map.entries());  // 返回一个包含键值对的对象 {"chen" => "wei", "ji" => "lin"}
+
+
+        // 不能使用 for in
+        // for (const key in map.keys()) {
+        //     console.log(key);
+        // }
+
+        for (const [key,values] of map.entries()) {
+            console.log(key, values);  
+        }
+
+        map.forEach((v, k)=> console.log(v, k));
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let-const-var 在for 循环中的表现</title>
+</head>
+<body>
+    <script>
+        // 绝大多数使用let
+        for (let i = 0; i <= 3; i+= 1) {
+            setTimeout(() => {
+                console.log(i);
+            }, 1000);
+        }
+
+        // 1 2 3 
+
+        for (var j = 0; j <= 3; j += 1) {
+            setTimeout(() => {
+                console.log(j);
+            }, 1000);
+        }
+        // 4 ,4 ,4 
+    </script>
+</body>
+</html>

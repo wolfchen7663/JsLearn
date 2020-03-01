@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优雅的开发面板</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        /* background: #2f3542; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    dl {
+        width: 600px;
+        height: 400px;
+        border: 2px solid red;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: ; */
+    }
+
+    dl dt {
+        width: 100%;
+        height: 10%;
+        background: #ff6b81;        
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    dl dd {
+        width: 100%;
+        height: 80%;
+        background: blue;
+        text-align: center;
+        font-size: 50px;
+        color: white;
+        padding: 140px;
+    }
+</style>
+
+<body>
+    <dl>
+        <dt>公告1</dt>
+        <dd>1</dd>
+        <dt>公告2</dt>
+        <dd hidden>2</dd>
+    </dl>
+</body>
+<script>
+    // let dts = document.querySelectorAll("dt");
+    // dts.forEach(function (dt, i) {
+    //     dt.addEventListener("click", function () {
+    //         let dds = document.querySelectorAll("dd");
+    //         dds.forEach(function (dd) {
+    //             dd.setAttribute("hidden", "hidden");
+    //         });
+    //         dds[i].removeAttribute("hidden");
+    //     });
+    // });
+    function panel(i) {
+        let dds = document.querySelectorAll("dd");
+        dds.forEach((dd) => {
+            dd.setAttribute("hidden", "hidden")
+        });
+        dds[i].removeAttribute("hidden");
+    }
+    let dts = document.querySelectorAll("dt");
+    dts.forEach((dt, i) => { 
+        dt.addEventListener("click", () => panel.call(null, i));
+    });
+</script>
+
+</html>

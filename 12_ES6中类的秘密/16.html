@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>类的方法继承</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Father{
+        show() {
+            console.log("name");
+        }
+    }
+
+    class Son extends Father{
+        constructor(name) {
+            super();
+            this.name = name;
+        }
+    }
+
+    let s = new Son("chen");
+    s.show();
+</script>
+</html>

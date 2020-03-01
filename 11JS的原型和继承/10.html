@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给一个对象给你一个世界</title>
+</head>
+
+<body>
+    <script>
+        // console.dir(Object);
+        function User(name) {
+            this.name = name;
+
+        }
+        User.prototype = {
+            constructor: User,
+            show() {
+                console.log(this.name);
+            }
+
+        }
+        let cw = new User("chenwei");
+        // 知道实例就可以在创建一个实例
+        function CreateByObject(obj, ...args) {
+            const constructor = Object.getPrototypeOf(obj).constructor;
+            return new constructor(...args);
+        }
+
+        let cxw = CreateByObject(cw, "xiaochenwei");
+        cxw.show();
+    </script>
+</body>
+
+</html>

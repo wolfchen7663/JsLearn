@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析的必要性</title>
+</head>
+<body>
+    
+</body>
+<script type="module">
+    //模块只有在初始化的时候才是初始状态，如果后期有变动，下次就在变动的基础上再变动，也就是模块只解析一次
+    import {} from "./6.2.js";
+    console.log(obj.name);
+    import {obj} from "./6.1.js";
+    console.log(obj.name);
+
+</script>
+</html>

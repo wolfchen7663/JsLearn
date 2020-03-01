@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封闭对象的API操作</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: "chen"
+        };
+        Object.seal(user); //封闭对象，不允许对对象有操作
+        Object.isSealed(user); // 判断对象是否被封闭
+    </script>
+</body>
+
+</html>

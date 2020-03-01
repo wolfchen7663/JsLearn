@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用函数完成递归算法</title>
+</head>
+
+<body>
+    <script>
+        function f(num) {
+            // 先找出去的点
+            if (num == 1) {
+                return 1;
+            } else {
+                return num * f(num - 1);
+            }
+        }
+        console.log(f(10));
+
+        // 优化写法
+        function fa(num) {
+           return num == 1 ? 1 : num * fa(num - 1);
+        }
+        console.log(fa(10));
+    </script>
+
+</body>
+
+</html>

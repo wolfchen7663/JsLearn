@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P35为低端浏览器定义原型方法matchAll</title>
+</head>
+<body>
+    <script>
+        String.prototype.matchAll = function (reg) {
+            let res = this.match(reg);
+            if (res) {
+                let str = this.replace(res[0], "^".repeat(res[0].length));
+                let match = str.matchAll(reg) || [];
+                return [res, ...match];
+            }
+        };
+
+        let str = "houdunren";
+        console.log(str.matchAll(/u/i));
+    </script>
+</body>
+</html>

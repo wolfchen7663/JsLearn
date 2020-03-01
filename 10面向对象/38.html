@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON序列化以及自定义toJSON</title>
+</head>
+<body>
+    <script>
+        let user = {
+            title: "learn",
+            url: "www.baidu,com",
+            teacher: {
+                name: "ji"
+            },
+            // JSON.stringify 可以自己定义
+            toJSON: function() {
+                return {
+                    "title": this.title,
+                    "teacher": "chen"
+                }
+            }
+        }
+
+        let jsonUser = JSON.stringify(user, ["title", "teacher"], 2); // []中表示只转化这几个数据 ，一般使用null
+        console.log(jsonUser);
+
+        let arr = [1, "wei"];
+        let jsonArr = JSON.stringify(arr, null, 2);
+        console.log(jsonArr);
+    </script>
+</body>
+</html>

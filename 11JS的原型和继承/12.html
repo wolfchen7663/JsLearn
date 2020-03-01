@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链检测之instanceof</title>
+</head>
+
+<body>
+    <script>
+        function A() {}
+
+        function B() {}
+
+        function C() {}
+        let c = new C();
+
+        B.prototype = c;
+        let b = new B();
+        A.prototype = b;
+        let a = new A();
+
+        C.prototype.show =  function () {
+            console.log("great");
+        }
+
+
+        console.log(a instanceof B); // true // 构造函数判断
+        console.log(b instanceof C); // true
+        console.log(a instanceof C); // true
+        a.show();
+        b.show();
+        c.show();
+    </script>
+</body>
+
+</html>

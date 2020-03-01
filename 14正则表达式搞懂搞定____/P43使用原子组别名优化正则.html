@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P43使用原子组别名优化正则</title>
+</head>
+
+<body>
+    <div>
+        <a id="baidu" href="https://www.baidu.com">baidu</a>
+        <a id="kugou" class="kugou" href="https://www.kugou.com">baidu</a>
+        <a id="weibo" href="https://www.weibo.com">baidu</a>
+    </div>
+
+    <script>
+        let div = document.querySelector("div");
+        let reg = /<a.*?href=(['"])(?<link>.*?)\1>(?<content>.*?)<\/a>/gi; // 能复用的最好弄成原子组
+        // console.log(div.innerHTML.match(reg));
+        let res = [];
+        for (const iterator of div.innerHTML.matchAll(reg)) {
+            res.push(iterator["groups"]);
+        }
+        console.log(res);
+    </script>
+</body>
+
+</html>

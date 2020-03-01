@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>in与hasOwnProperty的属性检测差异</title>
+</head>
+<body>
+    <script>
+        // in 不仅检测当前对象，还检测这个对象的原型链是否有
+        // hasOwnProperty 只检测当前对象
+        let a = {name: "chen", url: "www.baidu.com"};
+        for (const key in a) {
+            if (a.hasOwnProperty(key)) {
+                const element = a[key];
+                console.log(element);
+            }
+        }
+    </script>
+</body>
+</html>

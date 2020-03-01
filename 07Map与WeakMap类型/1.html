@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map类型特点与创建方法</title>
+</head>
+<body>
+    <script>
+        // 对象的键名一定是字符串
+        // Map的键名 可以是 数字 字符串 对象 函数等 即啥的可以做键名
+
+        const map = new Map();
+        map.set(1, "number");
+        map.set(function () {}, "function");
+        map.set({}, "object");
+        map.set([], "数组");
+        map.set("str", "string");
+        console.log(map);
+
+       console.log(map.get(1)); 
+    </script>
+</body>
+</html>

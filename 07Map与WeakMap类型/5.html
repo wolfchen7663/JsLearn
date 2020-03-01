@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map类型管理DOM节点</title>
+</head>
+<body>
+    <div class="change">你好啊</div>
+    <div class="change">弄i好啊啊啊</div>
+    <script>
+        let mapDom = new Map();
+        document.querySelectorAll(".change").forEach((elem)=>{
+            mapDom.set(elem, {value: elem.getAttribute("class")});
+        });
+        mapDom.forEach((config, item)=>{
+            item.addEventListener("click", ()=>{
+                alert(config.value);
+            })
+        });
+        console.log(mapDom);
+    </script>
+</body>
+</html>

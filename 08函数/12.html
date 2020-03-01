@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归附加参数的操作技巧</title>
+</head>
+
+<body>
+    <script>
+        lessons = [{
+            title: "aaaa",
+            click: 10
+        }, {
+            title: "bbbb",
+            click: 20
+        }, {
+            title: 'ccccc',
+            click: 30
+        }];
+
+        function changeClick(lessons, num = 100, i = 0) {
+            if (i == lessons.length) {
+                return lessons;
+            }
+            lessons[i].click += num;
+            return changeClick(lessons, num, i += 1);
+        }
+
+        console.table(changeClick(lessons, 1000));
+    </script>
+</body>
+
+</html>

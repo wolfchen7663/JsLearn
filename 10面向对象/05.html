@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值新增特性</title>
+</head>
+
+<body>
+    <script>
+        // 相当于数据库的简写或者重命名
+        let user = {
+            name: "david",
+            age: 11,
+            price: 99
+        }
+
+        let {name, age}= user;
+        console.log(name); //"david"
+        console.log(age);  // 11
+
+        // 解构其中一个也可以
+        let {price} = user;
+        console.log(price);
+    </script>
+</body>
+
+</html>

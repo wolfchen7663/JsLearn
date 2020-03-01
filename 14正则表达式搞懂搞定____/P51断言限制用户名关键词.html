@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>P51断言限制用户名关键词</title>
+</head>
+
+<body>
+    <input type="text" name="username">
+    <script>
+        let input = document.querySelector(`[name="username"]`);
+        let reg = /^(?!.*陈卫.*)[\w]{5,6}$/gi;
+        console.log(input.innerHTML.match(reg));
+        input.addEventListener("keyup", (e)=>{
+            console.log(e.target.value.match(reg));
+        });
+    </script>
+</body>
+
+</html>

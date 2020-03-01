@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟出var的块级作用域</title>
+</head>
+<body>
+    <script>
+        // 使用立即执行函数
+        for (var i = 0; i <= 4; i+=1) {
+            // 函数作用域
+            (function(a){
+                setTimeout(() => {
+                    console.log(a);
+                }, 1000);
+            })(i);
+        }
+    </script>
+</body>
+</html>

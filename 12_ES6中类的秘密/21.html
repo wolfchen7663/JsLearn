@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法的重写</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const data = [{
+        name: "js",
+        price: 100
+    }, {
+        name: "css",
+        price: 1000
+    }, {
+        name: "html",
+        price: 10000
+    }];
+
+
+    class Control {
+        sum() {
+            return this.data.reduce((total, cur) => total + cur.price, 0);
+        }
+        getKey(key) {
+            return this.data.filter(item => item.name.includes(key));
+        }
+    }
+
+
+    class Lesson extends Control {
+        constructor(data) {
+            super();
+            this.data = data;
+        }
+
+        info() {
+            return {
+                totalPrice: super.sum()
+            };
+        }
+        // 重写父类的方法
+        getKey(key) {
+            return super.getKey(key).map(item => item.name);
+        }
+    }
+
+    let l = new Lesson(data);
+    console.log(l.info());
+    console.log(l.getKey("s"));
+</script>
+
+</html>

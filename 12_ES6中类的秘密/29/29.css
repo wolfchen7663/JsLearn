@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+}
+main {
+  width: 400px;
+  height: 300px;
+  margin: 100px auto;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main .show {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+main .show:nth-of-type(1) h4 {
+  border-top-left-radius: 20px;
+}
+main .show h4 {
+  cursor: pointer;
+  flex-grow: 1;
+  color: papayawhip;
+  background: orangered;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .show .info {
+  height: 140px;
+  background: blueviolet;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P48 ?<= 断言匹配</title> </head> <body>
+            <main>
+                <a href="www.baidu.com"></a>
+                <a href="www.chenwei.com"></a>
+            </main>
+
+            <script>
+                //(?<=) 前面是什么 是作为条件 切记 断言的作用使得查找更加的精确 断言不是组
+                let cw = "houdunren789hdcms666666";
+                let reg = /(?<=houdunren)\d+/ig;
+                console.log(cw.match(reg));
+
+
+                let main = document.querySelector("body main");
+                let regAnother = /(?<=href=(["'])).+(?=\1)/gi;
+                main.innerHTML = main.innerHTML.replace(regAnother, "www.ha.com");
+            </script>
+            </body>
+
+</html>

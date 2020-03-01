@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即执行函数与块作用域解决冲突</title>
+</head>
+
+<body>
+    <script>
+
+        // 一般我们都不会这样用，一般都是用类/模块之类的来封装
+        // 导入模块直接运行(立即执行函数)
+        // 这样做的好处是 避免作用域冲突
+        (function (window) {
+            function a() {}
+
+            function b() {}
+            window.cw = {
+                a,
+                b
+            };
+        })(window);
+        cw.a();
+
+        // 块级作用域
+        {
+            let c = 100;
+            console.log(c); // 可以访问c
+        }
+        console.log(c); // 访问不到c
+
+
+        {
+            let d = function() {};
+            let e = function() {};
+            window.jcl = {d, e};
+        }
+        jcl.d();
+    </script>
+</body>
+
+</html>

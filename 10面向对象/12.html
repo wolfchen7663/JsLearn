@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象与原型链检测实例</title>
+</head>
+<body>
+    <script>
+        let user = {
+            name: "chenwei"
+        }
+        console.log(user);
+        console.log("name" in user); // true
+        console.log("isPrototypeOf" in user); // true
+
+        let son = {};
+        let parent = {};
+        Object.setPrototypeOf(son, parent); // 将 parent 设置为 son 的父级
+    </script>
+</body>
+</html>

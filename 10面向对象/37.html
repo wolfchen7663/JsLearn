@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON数据解决什么问题</title>
+</head>
+
+<body>
+    <script>
+        // 跨域传播数据
+        let json_info = `{
+            "name": "chen",
+            "click": 1
+        }`
+
+        // 对象转为JSON
+        let user = {name: "ch"};
+        console.log(JSON.stringify(user, null ,2)); 
+        // JSON字符串转为对象
+        console.log(JSON.parse(json_info));
+    </script>
+</body>
+
+</html>

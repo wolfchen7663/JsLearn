@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用访问器批量设置属性</title>
+</head>
+
+<body>
+    <script>
+        const User = {
+            name: "chen",
+            age: 11,
+            get info() {
+                return `姓名:${this.name},年龄:${this.age}`
+            },
+            set info(value) {
+                // console.log(value);
+                return [this.name, this.age] = value.split(",");
+            }
+        }
+
+        User.info = "q,w";
+        User.info;
+        console.log(User.info);
+    </script>
+</body>
+
+</html>

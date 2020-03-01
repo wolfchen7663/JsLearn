@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数的解构特性使用技巧</title>
+</head>
+
+<body>
+    <script>
+        function hd(price, {name:b, age:c}) {
+            console.log(price, b, c);
+        }
+
+        hd(1000, {name: "david", age: 12})
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原子组引用完成替换操作</title>
+</head>
+
+<body>
+    <h1>h1h1h1h1hh1</h1>
+    <h2>h2h2h2h2h2h2</h2>
+    <script>
+        let bo = document.body;
+        let reg = /<(h[1-6])>([\s\S]+)<\/\1>/gi;
+         bo.innerHTML = bo.innerHTML.replace(reg, "<p>$2</p>");
+        console.log(bo.innerHTML);
+    </script>
+</body>
+
+</html>

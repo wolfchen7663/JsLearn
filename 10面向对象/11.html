@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象属性的添加删除操作</title>
+</head>
+<body>
+    <script>
+        let user = {};
+        user.name = "david"; // 添加属性
+        delete user.name; // 删除属性
+        user.hasOwnProperty("name"); // 判断对象是否拥有自己的独有的属性，不包括原型链上的
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>利用闭包排序商品</title>
+</head>
+
+<body>
+    <script>
+        let goods = [{
+            name: "apple",
+            price: 100,
+            click: 122
+        }, {
+            name: "banana",
+            price: 1098,
+            click: 1
+        }, {
+            name: "watermelon",
+            price: 10000,
+            click: 133
+        }];
+
+        // goods.sort(function(a, b){
+        //     return a.price - b.price;
+        // })
+
+        function order(field, type = "asc") {
+            return function (a, b) { //最终执行的还是这个回调函数           // 闭包是为了给函数执行提供环境
+                // if (type == "asc") {
+                //     return a[field] - b[field];
+                // } else {
+                //     return b[field] - a[field];
+                // }
+                return type == "asc" ? a[field] - b[field] : b[field] - a[field];
+            }
+        }
+
+        let orderedGoodsByClick = goods.sort(order("click", "desc"));
+        console.table(orderedGoodsByClick);
+
+        let orderedGoodsByPrice = goods.sort(order("price"));
+        console.table(orderedGoodsByPrice);
+    </script>
+</body>
+
+</html>

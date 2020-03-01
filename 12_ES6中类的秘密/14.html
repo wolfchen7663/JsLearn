@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>private私有属性使用</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    "use strict";
+    class Common {
+        // # 这种私有只能在类内部使用
+        #host = "www.baidu.com";
+        constructor(name) {
+            this.name = name;
+            this.#checkName();
+        }
+        get host() {
+            return this.#host;
+        }
+
+        #checkName = () => {
+            if (this.name.length < 5) {
+                throw new Error("名字长度太短..")
+            } else {
+                return true;
+            }
+
+        }
+    }
+    console.log(new Common("chen"));
+</script>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数创建对象的方式</title>
+</head>
+<body>
+    <script>
+        function User(name) {
+            this.name = name;
+            // this.show = ()=> console.log(this);
+            this.show = function () {
+                console.log(this);
+            }
+        }
+        let user = new User("chenwei");
+        user.show();
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自定义对象的原型设置</title>
+</head>
+
+<body>
+    <script>
+        let son = {
+            name: "son"
+        };
+        let parent = {
+            name: "parent",
+            show() {
+                console.log(this.name);
+            }
+        };
+        Object.setPrototypeOf(son, parent); //设置原型
+        parent.show();
+        son.show();
+        console.log(Object.getPrototypeOf(son));
+    </script>
+</body>
+
+</html>

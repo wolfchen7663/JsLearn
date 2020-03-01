@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数中作用域的使用形态</title>
+</head>
+<body>
+    <script>
+        function Test() {
+            let i = 0;
+            this.show = function () { // 这里只是定义
+                console.log(i+=1);
+            }
+        }
+
+        let myTest = new Test();
+        myTest.show(); // 这里调用 保留了上面的数据 1
+        myTest.show(); // 2
+        let myTestAnother = new Test(); // 重新开辟空间
+        myTestAnother.show(); // 1
+        myTestAnother.show();  // 2
+    </script>
+</body>
+</html>

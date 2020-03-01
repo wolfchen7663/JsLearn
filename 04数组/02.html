@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div>q</div>
+    <div>w</div>
+    <script>
+        // DOM 元素转换为数组操作
+        const div = document.querySelectorAll("div");
+        [...div].map(function(items){
+            items.addEventListener("click", function() {
+                this.classList.toggle("hide");
+            });
+        });
+    </script>
+
+</body>
+</html>

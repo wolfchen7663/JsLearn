@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态继承原理</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class User{
+        static site= "www.baidu,com";
+        static show  = function () {
+            console.log("user");
+        }
+    }
+    // 这样就直接继承了父级静态的方法
+    class Admin extends User{
+
+    }
+
+    Admin.show();
+    console.log(Admin.site);
+</script>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <title>P50?!断言匹配</title>
+</head>
+<body>
+    <script>
+        //(?!) 后面不是什么
+        // 取 hdcms
+        let hd = "houdunren1111hdcms";
+        let reg = /[a-z]+(?!\d+)$/i; // 注意这里的 结尾限制符$与断言无关，只与前面的有关
+        console.log(hd.match(reg));
+    </script>
+</body>
+</html>

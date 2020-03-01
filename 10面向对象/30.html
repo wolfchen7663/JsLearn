@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问器的优先级</title>
+</head>
+<body>
+    <script>
+        "use strict"
+        const DATA = Symbol()
+        const User = {
+            [DATA]: {
+                name: "chen",
+                age: 12
+            },
+            set name(value) {
+                this[DATA].name = value;
+            },
+            get name() {
+                return this[DATA].name;
+            }
+        };
+        // User.data.name = "hhh";
+        User[DATA].name = "hhhhh";
+        User.name = "ji";
+        // User.name = "ji";
+        console.log(User.name); 
+    </script>
+</body>
+</html>

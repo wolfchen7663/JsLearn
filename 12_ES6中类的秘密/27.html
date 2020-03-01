@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mixin混合模式使用技巧</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    "use strict";
+    const data = [{
+        name: "js",
+        click: 11,
+        price: 12
+    }, {
+        name: "css",
+        click: 110,
+        price: 120
+    }, {
+        name: "html",
+        click: 1100,
+        price: 1200
+    }];
+
+    let Tool = {
+        max(key) {
+            // return this.data.sort((a, b)=> b[key]-a[key]).map(item=>`${item.name}的价格是${item[key]}`);
+            return this.data.sort((a, b) => b[key] - a[key])[0][key];
+        },
+        includeKeyTotal(value) {
+            return this.data.filter(v => v.name.includes(value)).reduce((t, c) => t + c.price, 0);
+        }
+    };
+    let Arr = {
+        total(key) {
+            return this.data.reduce((total, cur) => total + cur[key], 0);
+        }
+    };
+    class Lesson {
+        constructor(lessons) {
+            this.lessons = lessons;
+        }
+        get data() {
+            return this.lessons;
+        }
+    }
+
+    Object.assign(Lesson.prototype, Tool, Arr);
+    let l = new Lesson(data);
+    console.log(l.max("price")); // 1200
+    console.log(l.total("price")); // 1332
+    console.log(l.includeKeyTotal("s")); //name 中 包含 s 的总和 132
+</script>
+
+</html>

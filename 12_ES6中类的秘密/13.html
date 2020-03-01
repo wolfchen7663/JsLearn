@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用WeakMap保护属性</title>
+</head>
+<body>
+</body>
+<script>
+    "use strict";
+    const host = new WeakMap();
+    class Request{
+        constructor(name){
+            this.name = name;
+            host.set(this, "https://www.baidu.com");
+        }
+        set host(url) {
+            if (!/^https?:/i.test(url)) {
+                throw new Error("网址不对");
+            }else {
+                host.set(this, url);
+            }
+        }
+        get host() {
+            return host.get(this);
+        }
+
+    }
+
+    let r = new Request("chen");
+    console.log(r.host);
+</script>
+</html>

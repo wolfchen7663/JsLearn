@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认参数的使用技巧</title>
+</head>
+
+<body>
+    <script>
+        /*默认参数一定要放在最后面
+        如果默认参数和[...args]放在一起，那么[...args]哎默认参数的后面*/
+
+        function avg(total, year = 1) {
+            // let year = year || 1; 以往的方式
+            return Math.round(total / year);
+        }
+
+        //...................................
+
+        function sortArray(arr, type = "asc") {
+            // return arr.sort(function (a, b) {
+            //     // if (type == "asc") {
+            //     //     return a - b;
+            //     // } else {
+            //     //     return b - a;
+            //     // }
+            //     return type=="asc" ? a-b : b -a;
+            // })
+
+            return arr.sort((a, b) => (type == "asc" ? a - b : b - a));
+        }
+
+        //.......................................
+        function sum(total, discount=0, dis = 0) {
+            return total*(1-discount)*(1-dis);
+        }
+        let finalPrice = sum(200000, 0.3, 0.4);
+        console.log(finalPrice);
+
+    </script>
+</body>
+
+</html>

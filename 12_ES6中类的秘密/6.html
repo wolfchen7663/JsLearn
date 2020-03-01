@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>严格模式下运行</title>
+</head>
+<body>
+    <script>
+        // "use strict";
+        // class 自带严格模式
+        class User {
+            constructor(name) {
+                this.name = name;
+            }
+            show() {
+
+                function test() {
+                    console.log(this.name);
+                }
+                test.bind(this)();
+            }
+        }
+
+        let u = new User("chen");
+        u.show();
+
+    </script>
+</body>
+</html>

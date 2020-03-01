@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>没有原型的对象也是存在的</title>
+</head>
+
+<body>
+    <script>
+        //完全数据字典对象
+        let hd = Object.create(null, {
+            name: {
+                value: "chen"
+            }
+        });
+        console.log(hd);
+    </script>
+</body>
+
+</html>

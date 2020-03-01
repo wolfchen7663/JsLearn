@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P31批量使用正则完成密码验证</title>
+</head>
+<body>
+    <input type="text" name="password">
+    <script>
+        const pwd = document.querySelector(`[name="password"]`);
+        const regs = [/^[a-z0-9]{8,10}$/i, /[A-Z]/, /[0-9]/];
+        pwd.addEventListener("keyup", (e)=> {
+            const value = e.target.value;
+            let status = regs.every(item=>item.test(value));
+            console.log(status);
+        });
+    </script>
+</body>
+</html>

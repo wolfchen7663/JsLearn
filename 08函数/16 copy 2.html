@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数给this带来的变化3</title>
+</head>
+
+<body>
+    <button>CLICK ME</button>
+    <button>CLICK YOU</button>
+    <script>
+        let Dom = {
+            site: "www.baidu.com",
+            bind() {
+                let bts = document.querySelectorAll("button");
+                // let that = this;
+                // bts.forEach(function (elem) {
+                //     elem.addEventListener("click", function (event) {
+                //         console.log(that.site + event.target.innerHTML);
+                //     })
+                // });
+                bts.forEach((elem) => {
+                    console.log(this); // 这里的this 指向对象 Dom
+                    elem.addEventListener("click", (event) => {
+                        console.log(this); // 这里的this 指向对象 Dom
+                        console.log(this.site + event.target.innerHTML);
+                    });
+                });
+            }
+        };
+        Dom.bind();
+    </script>
+</body>
+
+</html>

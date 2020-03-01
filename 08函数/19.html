@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数方法继承</title>
+</head>
+
+<body>
+    <script>
+        function getInformation() {
+            this.get = function (params) {
+                let str = Object.keys(params).map(k => `${k}=${params[k]}`).join("&");
+                let url = `https://houdunre.com?${this.url}/${str}`;
+                document.write(url + `<hr>`);
+            };
+        }
+
+        function Article() {
+            this.url = "articles/lists";
+            getInformation.call(this);
+            // this.get = function (params) {
+            //     let str = Object.keys(params).map(k => `${k}=${params[k]}`).join("&");
+            //     let url = `https://houdunre.com?${this.url}/${str}`;
+            //     document.write(url + `<hr>`);
+            // };
+        }
+        let a = new Article();
+        a.get({
+            id: 1,
+            cat: "hah"
+        });
+
+
+        function User() {
+            this.url = "users/lists";
+            getInformation.call(this);
+            // this.get = function (params) {
+            //     let str = Object.keys(params).map(k => `${k}=${params[k]}`).join("&");
+            //     let url = `https://houdunre.com?${this.url}/${str}`;
+            //     document.write(url);
+            // };
+        }
+        let u = new User();
+        u.get({
+            id: 2,
+            cat: "dddd"
+        });
+    </script>
+</body>
+
+</html>

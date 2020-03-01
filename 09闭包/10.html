@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用闭包获取区间商品</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 3, 5, 6, 7, 8, 9];
+
+        function between(a, b) {
+            return function (v) {
+                return v >= a & v <= b;
+            }
+        }
+        let res = arr.filter(between(2, 5));
+        console.log(res);
+        /*
+        arr.filter(callbackfn(value, index, arr)) // callbackfn 作用于数组的每个元素，并将返回true的元素保留，生成一个新的数组返回
+        */
+    </script>
+</body>
+
+</html>

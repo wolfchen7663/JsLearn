@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let year = "2020年";
+        let name = "陈卫";
+        // 字面量形式
+        let word = `${year}${name}哈哈哈`; 
+        console.log(`${name}在${year}发财`);
+        console.log(word);
+        const date = new Date();
+        console.log(typeof date)
+        console.log(date*1)
+        const year_day = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const week = date.getDay();
+        console.log(year, month, day, week);
+        console.log(date.getHours()-12);
+
+        const old_time = new Date('2020-02-02 00:00:00');
+        const old_timestamp = old_time.valueOf();
+        const now_time = new Date();
+        const now_timestamp = now_time.valueOf();
+        const time = now_timestamp - old_timestamp;
+        console.log(time);
+        // console.log(new Date(time));
+    </script>
+</body>
+</html>

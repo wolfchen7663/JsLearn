@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let word = '   qchenWeiq   ';
+        let word_trim = word.trim(); // 去除字符串的首尾的空格
+        let word_upper = word.toUpperCase();
+        let word_lower = word.toLowerCase();
+        console.log(word_upper);
+        console.log(word_lower);
+        console.log(word_trim);
+        // 字符串截取
+        let hd = "houdunren.com";
+        console.log(hd.slice(1, 3)); // 左闭右开 ou
+        console.log(hd.substring(1, 3)); // 左闭右开 ou
+        console.log(hd.substr(1, 3)); // 左闭，截取3个 oud
+
+        console.log(hd.slice(-3, -2)); // c 左闭右开
+        console.log(hd.substring(-3, -1)); // 复数相当于 0 
+        console.log(hd.substr(-3, 1)); // c 左闭，截取一个 
+        
+        // 字符串检索
+        const test = 'qwerttewrs';
+        console.log(test.includes('w', 1)); // true
+        console.log(test.indexOf('w')); // 1
+        console.log(test.lastIndexOf('w', 4)) // 1;  4  4表示从下标为4向前查找
+        console.log(test.startsWith('q')); // true
+        console.log(test.endsWith('s')); //true
+
+        // 字符串替换
+        const ex = 'chenwei';
+        console.log(ex.replace('e', 'm')); // 后面的替换前面的
+
+        // 字符串转换为数组
+        const str = 'cwwan';
+        console.log(str.split(''));
+        // 数组转换为字符串
+        const arr = ['a', 'e', 'c', 'd'];
+        console.log(arr.join('-'));
+        console.log(arr.toString());
+
+    </script>
+</body>
+
+</html>

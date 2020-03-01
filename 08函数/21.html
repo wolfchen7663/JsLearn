@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind 的用法(漂亮的随机变色效果)</title>
+</head>
+<body>
+    我最帅
+    <h1>学完啦</h1>
+    <script>
+        // bind 不会立即执行，会得到一个新的函数,会有两次传参的机会
+        function Color(elem) {
+            this.elem = elem;
+            this.colors = ["#eccc68", "#ff7f50", "#ff6b81", "#5352ed", "#2ed573"];
+            this.change = function () {
+                setInterval(() => {
+                    let i = Math.floor(Math.random()*this.colors.length);
+                    // console.log(i);
+                    this.elem.style.backgroundColor = this.colors[i];
+                }, 2000);
+            }
+        }
+
+        let myBody = new Color(document.body);
+        let myH1 = new Color(document.querySelector("h1"));
+        myBody.change();
+        myH1.change();
+
+    </script>
+</body>
+</html>

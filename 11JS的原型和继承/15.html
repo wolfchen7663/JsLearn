@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用call或apply借用原型链</title>
+</head>
+
+<body>
+    <script>
+        let hd = {
+            data: [1, 2, 4, 5, 6, 7],
+            max() {
+                return this.data.sort((a, b) => b - a)[0];
+            }
+        };
+
+        let another = {
+            score: {
+                java: 12,
+                js: 111,
+                css: 1111
+            },
+            get data() {
+                return Object.values(this.score);
+            }
+        }
+
+        let maxNum = hd.max.call(another)
+        // console.log(hd.max());
+        console.log(maxNum);
+    </script>
+</body>
+
+</html>

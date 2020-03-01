@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组使用代理拦截</title>
+</head>
+
+<body>
+    <script>
+        // 所谓的拦截代理就是用简单的命令更丰富的操作数组
+        let lessons = [{
+            title: "java",
+            click: 12
+        }, {
+            title: "cssandhtml5",
+            click: 13
+        }, {
+            title: "learn vs code",
+            click: 14
+        }];
+
+        let proxy = new Proxy(lessons, {
+            get(array, key) {
+                let len = 5;
+                array[key].title = array[key].title.length > len ?
+                    array[key].title.substr(0, len) + ".".repeat(3) :
+                    array[key].title;
+                return array[key];
+            }
+        });
+
+        // console.log(proxy[2]);
+        console.log(JSON.stringify(proxy[1], null, 2));
+    </script>
+</body>
+
+</html>

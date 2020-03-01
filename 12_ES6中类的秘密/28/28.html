@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>灵活的动画处理类</title>
+    <link rel="stylesheet" href="28.css">
+</head>
+
+<body>
+    <main>
+        <div class="show">
+            <h4>陈卫</h4>
+            <div class="info first"></div>
+        </div>
+        <div class="show">
+            <h4>陈卫</h4>
+            <div class="info second"></div>
+        </div>
+    </main>
+
+</body>
+<script>
+    class Animation {
+        constructor(el) {
+            this.el = el;
+            this.defaultDivHeight = this.height;
+            this.isShow = true;
+            // console.log(this.defaultDivHeight);
+        }
+        get height() {
+            return window.getComputedStyle(this.el).height.slice(0, -2) * 1;
+        }
+        set height(height) {
+            this.el.style.height = height + "px";
+        }
+        hide(callback) {
+            this.isShow = false;
+            let id = setInterval(() => {
+                this.height = this.height - 1;
+                if (this.height <= 0) {
+                    clearInterval(id);
+                    callback && callback();
+                }
+            }, 10);
+        }
+        show(callback) {
+            this.isShow = true;
+            let id = setInterval(() => {
+                this.height = this.height + 1;
+                if (this.height >= this.defaultDivHeight) {
+                    clearInterval(id);
+                    callback && callback();
+                }
+            }, 10);
+        }
+    }
+
+    // let elFirst = document.querySelector(".first");
+    // let el1 = new Animation(elFirst);
+    // el1.hide(()=>el1.show());
+    // let elSec = document.querySelector(".second");
+    // let el2 = new Animation(elSec);
+    // el2.hide(()=>el2.show());
+
+    document.querySelectorAll("h4").forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelectorAll(".info").forEach(item => {
+                let n = new Animation(item);
+                n.hide(() => n.show());
+            });
+        });
+    });
+</script>
+
+</html>

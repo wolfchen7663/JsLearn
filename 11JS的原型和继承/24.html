@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>改变构造函数的原型并不是继承</title>
+</head>
+
+<body>
+    <script>
+        // 继承不是改变构造函数的原型
+        // 以下操作是错误的
+        function A() {}
+        A.prototype.show = () => console.log("user name");
+        let a = new A();
+        a.show();
+        // B 也想拥有 show() 方法
+        function B() {}
+        B.prototype = A.prototype;
+        
+        // B.prototype 添加 add() 方法,相当于添加在 A.prototype
+        B.prototype.add = ()=>{}
+        // C 也想拥有 show() 方法
+        function C() {}
+        C.prototype = A.prototype;
+        // 当C.prototype 添加同名的 add() 方法时， 就把 B.prototype 的 add 方法覆盖了
+    </script>
+</body>
+
+</html>

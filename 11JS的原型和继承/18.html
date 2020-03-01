@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>合理的构造函数声明方法</title>
+</head>
+
+<body>
+    <script>
+        // 方法放在原型中复用
+        function User(name) {
+            this.name = name;
+        }
+        // 当只有一个方法时
+        // User.prototype.add = function () {
+        //     console.log("only one");
+        // }
+
+        // 当有多个方法时
+        User.prototype = {
+            constructor: User,
+            get() {
+                console.log("get.......");
+            },
+            show() {
+                console.log("show....");
+            }
+        }
+
+
+        let achen = new User("chen");
+        let li = new User("li");
+        li.show();
+        achen.show();
+    </script>
+</body>
+
+</html>

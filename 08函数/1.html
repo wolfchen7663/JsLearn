@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数声明的多种方式</title>
+</head>
+
+<body>
+    <script>
+        // 1 普通的函数定义
+        function a(name) {
+            console.log(name);
+        }
+        a("chenwei");
+
+        // 2 函数作为变量
+        let b = function (name) {
+            console.log(name);
+        }
+        b("chenwei");
+
+        //3 
+        // let c = {
+        //     name: null,
+        //     setUsername: function(name) {
+        //         this.name = name;
+        //     },
+        //     getUsername: function() {
+        //         console.log(this.name);
+        //     }
+        // };
+        let c = {
+            name: null,
+            // 这里的函数是作为方法的
+            setUsername(name) {
+                this.name = name;
+            },
+            getUsername() {
+                console.log(this.name);
+            }
+        };
+        c.setUsername("chenwei");
+        c.getUsername();
+    </script>
+</body>
+
+</html>

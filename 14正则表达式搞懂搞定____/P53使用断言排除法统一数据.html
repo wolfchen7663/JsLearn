@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P53使用断言排除法统一数据</title>
+</head>
+
+<body>
+    <main>
+        <a href="https://oss.baidu.com/1.jpg">1</a>
+        <a href="http://www.baidu.com/2.jpg">2</a>
+        <a href="https://baidu.com/3.jpg"></a>
+        <a href="http://cdn.baidu.com/4.jpg"></a>
+    </main>
+    <script>
+        const main = document.querySelector("main");
+        let reg = /(https?)(:\/\/)([a-z]+)?(?<!oss)(\..+?)(?=\/)/ig;
+        main.innerHTML = main.innerHTML.replace(reg, (v, ...args) => {
+            // console.log(v);
+            console.log(args);
+            args[0] == "https" ? args[0] : args[0] += "s";
+            args[2] = "oss";
+            return args.splice(0, 4).join("");
+        });
+    </script>
+</body>
+
+</html>

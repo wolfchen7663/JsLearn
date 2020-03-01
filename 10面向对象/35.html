@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUEJS数据绑定的容器更新</title>
+</head>
+
+<body>
+    <input type="text" v-model="content">
+    <input type="text" v-model="title">
+    <input type="text" v-model="title">
+    <div v-bind="title"></div>
+    <div v-bind="content"></div>
+    <script>
+        function View() {
+            // 这里代理作为数据容器
+            let proxy = new Proxy({}, {
+                get(obj, property) {},
+                set(obj, property, value) {
+                    console.log(obj);
+                    console.log(value);
+                    console.log(property);
+                    document.querySelectorAll(`[v-model="${property}"]`).forEach(item => {
+                        item.value = value;
+                    });
+                    document.querySelectorAll(`[v-bind="${property}"]`).forEach(item => {
+                        item.innerHTML = value;
+                    });
+                }
+            });
+
+            this.init = function () {
+                let els = document.querySelectorAll("[v-model]");
+                els.forEach(item => {
+                    item.addEventListener("keyup", function () {
+                        proxy[this.getAttribute("v-model")] = this.value;
+                    });
+                });
+            };
+        }
+        new View().init();
+    </script>
+</body>
+
+</html>

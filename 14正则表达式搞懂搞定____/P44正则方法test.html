@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P44正则方法test</title>
+</head>
+
+<body>
+    <input type="text" name="email">
+    <script>
+        // test
+        const mail = document.querySelector(`[name="email"]`);
+        mail.addEventListener("keyup", (e) => {
+            let value = e.target.value;
+            console.log(value);
+            let flag = /^[\w-]+@(\w+\.)+(com|cn|cc|org)$/i.test(value);
+            console.log(flag);
+        });
+    </script>
+</body>
+
+</html>

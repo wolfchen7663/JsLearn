@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型中的constructor引用</title>
+</head>
+
+<body>
+    <script>
+        // 构造函数的原型的constructor就是构造函数本身
+        function User(name) {
+            this.name = name;
+        }
+        // User.prototype 这个原型是服务于所有由User衍生的对象的，只要User.prototype里的功能，User衍生出的对象都可以调用
+        // (override)改变原型的时候，一定不能丢失掉 constructor
+        User.prototype = {
+            constructor: User,
+            show() {
+                console.log(this.name + "  重写User.prototype, 一定不能丢失掉 constructor");
+            },
+
+        }
+        User.prototype.add  = function () {
+            console.log("添加功能，而不是重写User.prototype");
+        }
+        console.log(User.prototype.__proto__ == Object.prototype);// true
+        console.log(User.prototype.constructor == User); // true
+        let cw = new User.prototype.constructor("cw");
+        cw.show();
+        console.log(cw.__proto__ == User.prototype); //true
+        cw.add();
+    </script>
+</body>
+
+</html>

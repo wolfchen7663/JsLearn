@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数有多个长辈</title>
+</head>
+
+<body>
+    <script>
+        function Test() {}
+        console.log(Test);
+        console.dir(Test);
+        /*
+            prototype: {constructor: ƒ}  给实例用的
+            __proto__: ƒ () 给自己用的, 作为普通对象
+            详细参见图片
+        */
+        let test = new Test();
+        let bl = Test.prototype == test.__proto__;
+        console.log(bl); // true
+    </script>
+</body>
+
+</html>

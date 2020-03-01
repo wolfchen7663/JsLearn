@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象的多态</title>
+</head>
+
+<body>
+    <script>
+        // 一个人的不同形态的不同结果
+        function Father() {
+
+        }
+        Father.prototype.show = function() {
+            console.log(this.description());
+        }
+
+        function SonFirst() {}
+        SonFirst.prototype = Object.create(Father.prototype);
+        Object.defineProperty(SonFirst.prototype, "constructor", {
+            value: SonFirst,
+            enumerable: false
+        });
+        SonFirst.prototype.description = function() {
+            return "SonFirst";
+        };
+
+        function SonSecond() {}
+        SonSecond.prototype = Object.create(Father.prototype);
+        Object.defineProperty(SonSecond.prototype, "constructor", {
+            value: SonSecond,
+            enumerable: false
+        });
+        SonSecond.prototype.description = function() {
+            return "SonSecond";
+        };
+
+        let s1 = new SonFirst();
+        let s2 = new SonSecond();
+
+        for (const obj of [s1, s2]) {
+            obj.show();
+        }
+    </script>
+</body>
+
+</html>

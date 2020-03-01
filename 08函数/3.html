@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名函数与函数提升</title>
+</head>
+
+<body>
+    <script>
+        /*标准方式定义函数，会提升*/
+        cw();
+
+        function cw() {
+            console.log("chenwei");
+        }
+        // 这个不会提升 不论是 let 还是 var 
+        var cw = function () {
+            console.log("JCL");
+        };
+
+        // 求和函数
+        function sum(...args) { // 将传入的变量变为数组（不定数量的参数）
+            // return args.reduce(function (a, b) {
+            //     return a + b;
+            // });
+            return args.reduce((a, b) => a + b);
+        }
+        let res = sum(1, 2, 3, 4);
+        console.log(res); // 10
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则操作DOM</title>
+</head>
+
+<body>
+    <h1>sss</h1>
+    <p>sssss</p>
+    <h2></h2>
+    <script>
+        let bo = document.body;
+        let reg = /<(h[1-6])>[\s\S]*<\/\1>/gi;
+        bo.innerHTML = bo.innerHTML.replace(reg, "");
+    </script>
+</body>
+
+</html>

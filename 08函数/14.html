@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数中与方法中this的不同</title>
+</head>
+
+<body>
+    <script>
+        /*当函数作为方法的时候，那么this 就指向拥有这个方法的对象，也就是实例
+        当只是普通的函数时，那么this指向的是 window这个全局对象
+        this 是在函数作用域里面寻找
+        */
+        let cw = {
+            name: "chenwei",
+            getName: function () { // 方法
+                console.log(this.name);
+                let that = this; // 通过将this 绑钉在that上，来解决this 的指向问题
+                function f() { // 普通函数
+                    console.log(that.name);
+                }
+                f();
+            }
+        };
+
+        console.log(cw.getName());
+    </script>
+</body>
+
+</html>

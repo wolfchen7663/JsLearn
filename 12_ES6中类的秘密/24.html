@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>isPrototypeOf检测继承关系</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Common{}
+    class User extends Common{}
+    class Admin extends User{}
+    let a = new Admin()
+    console.log(User.prototype.isPrototypeOf(a));
+    console.log(Common.prototype.isPrototypeOf(a));
+</script>
+</html>

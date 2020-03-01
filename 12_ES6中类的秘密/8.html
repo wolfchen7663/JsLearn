@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态方法的实现原理</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        // 构造函数的静态方法
+        function Father(name) {
+            this.name = name;
+        }
+
+        Father.prototype.add = function () {
+            console.log("son");
+        };
+        // 静态方法
+        Father.__proto__.add = function () {
+            console.log("father");
+        };
+
+        let son = new Father("chen");
+        son.add();
+        Father.add(); //静态方法只能对象自己调用
+        //............
+
+
+        class User {
+            static show() {
+                console.log("User");
+            } // 静态方法 给对象User 调用
+            show() {
+                console.log("user");
+            } // 给 实例user 调用
+        }
+
+        let user = new User();
+        user.show();
+        User.show();
+
+        //........
+        class Member {
+            constructor(name, age, sex) {
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+            static create(...args) {
+                return new this(...args);
+            }
+        }
+        let member = Member.create("chen", 12, "男");
+    </script>
+</body>
+
+</html>

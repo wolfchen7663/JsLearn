@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模块的具名导出与导入</title>
+</head>
+<body>
+    
+</body>
+<script type="module">
+    // 有具体的名字
+    import {url, show, User} from "./7.js";
+    console.log(url);
+    console.log(show());
+    let u = new User();
+    console.log(u.render());
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用instanceof检测对象实现</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // function User() {
+
+    // }
+
+    // function Admin() {}
+
+    // Admin.prototype = Object.create(User.prototype);
+    // Object.defineProperty(Admin.prototype, "constructor", {
+    //     value: Admin,
+    //     enumerable: false
+    // });
+    class User{}
+    class Admin extends User{}
+
+    let a = new Admin();
+    // Admin.prototype 是否在 a 的原型链上
+    console.log(a instanceof Admin); // true
+    console.log(a instanceof User); // true
+</script>
+</html>

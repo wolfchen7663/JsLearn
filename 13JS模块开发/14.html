@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按需加载</title>
+</head>
+
+<body>
+    <button>aaa</button>
+</body>
+<script type="module">
+    document.querySelector("button").addEventListener("click",()=>{
+        import("./14.js").then(({user, url})=>{
+        console.log(url, user);
+    });
+    })
+</script>
+
+</html>

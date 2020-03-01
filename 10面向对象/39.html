@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON转为JS可操作对象</title>
+</head>
+<body>
+    <script>
+        // 后台传递过来的是JSON格式的字符串
+        let str = `{
+            "name": "chen",
+            "click": 12
+        }`;
+
+        let strJson = JSON.parse(str, (key, value)=>{
+            if (key == "name") {
+                value = "ji";
+            }
+            return value;
+        });
+
+        console.log(strJson);
+    </script>
+</body>
+</html>

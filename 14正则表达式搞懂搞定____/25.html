@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>邮箱验证原子组</title>
+</head>
+<body>
+    <script>
+        let mail = `992510191@sina.com.cn`;
+        let reg = /[\w-]+@([\w-]+\.)+(com|net|cn|cc)/gi;
+        console.log(reg.test(mail));
+    </script>
+</body>
+</html>

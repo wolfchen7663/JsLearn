@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>移动动画的闭包使用2</title>
+    <style>
+        button {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <button message="陈卫">chenwei</button>
+    <button message="季春林">jichunlin</button>
+    <script>
+        let bts = document.querySelectorAll("button");
+        bts.forEach(function (value) {
+            let flag = false;
+            value.addEventListener("click", function () { // 这里点击一次，产生一个环境
+                if (!flag) {
+                    flag = true;
+                    left = 1;
+                    setInterval(() => {
+                        value.style.left = (left += 10) + "px";
+                    }, 1000);
+                }
+
+            }); // 只有点击的时候才触发 listener即 function(){},所以这里形成了闭包
+        });
+    </script>
+</body>
+
+</html>

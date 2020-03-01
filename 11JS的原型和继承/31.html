@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用父类构造函数初始属性</title>
+</head>
+
+<body>
+    <script>
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        Father.prototype.show = function () {
+            console.log(this.name, this.age);
+        }
+
+        function Son(...args) {
+            Father.apply(this, args);
+        }
+        Son.prototype = Object.create(Father.prototype);
+        Object.defineProperty(Son.prototype, "constructor", {
+            value: Son,
+            enumerable: false,
+        });
+
+
+        let cw = new Son("cw", 18);
+        cw.show();
+    </script>
+</body>
+
+</html>

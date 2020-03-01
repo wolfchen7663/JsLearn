@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+   <div class="num-1">111111111111111</div>
+   <div class="num-2">222222222</div>
+    <script>
+        let divs = document.querySelectorAll("div");
+        divs.forEach(function (div) {
+            let divClass = div.getAttribute("class");
+            div.addEventListener("click", function () { // 这里注意只有点击的时候，函数才执行
+                console.log(divClass);
+                console.log(div);
+            });
+            div = null; //防止内存泄漏
+        });
+        
+    </script>
+</body>
+
+</html>

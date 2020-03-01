@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P33标签替换的禁止贪婪使用</title>
+</head>
+
+<body>
+    <main>
+        <span>ddd</span>
+        <span>56789</span>
+        <span>12432788656</span>
+    </main>
+    <script>
+        // 加问号阻止贪婪
+        const main = document.querySelector("main");
+        const reg = /<span>([\s\S]+?)<\/span>/gi;
+        main.innerHTML = main.innerHTML.replace(reg, (v, p1)=> {
+            return `<h1 style="color:red">陈卫-${p1}</h1>`
+        })
+    </script>
+</body>
+
+</html>

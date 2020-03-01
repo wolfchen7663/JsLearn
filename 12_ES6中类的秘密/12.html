@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用Symbol定义protected属性</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        const protected_para = Symbol(); // Symbol() 具有唯一性 每次都会产生一个新的
+        class Common {
+            // [HOST] = "https://www.baidu.com"; //[HOST] 表示的是 Symbol()的值
+            constructor() {
+                this[protected_para] = {};
+                this[protected_para].host = "https://www.baidu.com";
+            }
+
+            set host(url) {
+                if (!/^https?:/i) {
+                    throw new Error("error");
+                }
+                this[protected_para].host = url;
+            }
+
+            get host() {
+                return this[protected_para].host;
+            }
+        }
+
+        class User extends Common {
+
+            constructor(name) {
+                super();
+                this[protected_para].name = name;
+            }
+
+            get name() {
+                return this[protected_para].name;
+            }
+
+        }
+
+        let u = new User("chen");
+        console.log(u.host);
+        console.log(u.name);
+    </script>
+</body>
+
+</html>

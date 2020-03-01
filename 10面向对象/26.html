@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用访问器保护数据</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        const user = {
+            data: {
+                name: "chenwei",
+                age: 11
+            },
+            set age(value) {
+                if (typeof value != "number" || value <= 10 || value >= 100) {
+                    throw new Error("年龄有错误");
+                }
+                this.data.age = value;
+            },
+            get age() {
+                return this.data.age;
+            }
+        }
+
+        user.age = 39;
+        console.log(user.age);
+    </script>
+</body>
+
+</html>

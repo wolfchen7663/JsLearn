@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>递归实现倒三角</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // let div = document.querySelector("div");
+
+        function star(num) {
+            if (num == 0) {
+                return "";
+            }
+            document.write ("*".repeat(num) + "<br>"); //  
+            console.log(document.write("*".repeat(num) + "<br>")); // undefined
+            star(num-1);
+        }
+        // 优化
+        // function star(num) {
+            
+        //     return num == 0 ? "" : document.write("*".repeat(num) + "<br>") || star(num - 1);
+            
+        // }
+        star(10);
+    </script>
+</body>
+
+</html>

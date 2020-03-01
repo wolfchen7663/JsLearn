@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数给this带来的变化1</title>
+    <style>
+        div {
+            border: solid 2px red;
+            width: 100px;
+        }
+        section {
+            border: solid 2px blue;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div>Please Click Me!!!!</div>
+    </section>
+
+    <script>
+        // 回调函数是普通函数
+        let sec = document.querySelector("section");
+        let div = document.querySelector("div");
+        /*这里的 div sec 都是 dom 对象*/
+        // div.addEventListener("click", function () {
+        //     console.log(this); // 这里的this指向div，也就是说这个匿名函数不是普通的函数，而是当作一种方法
+        // });
+        sec.addEventListener("click", function () {
+            console.log(this); // 这里的this指向section，也就是说这个匿名函数不是普通的函数，而是当作一种方法
+            div.addEventListener("click", () => {
+                console.log(this); // 这里的this指向section ,也就是箭头函数改变了this的指向，这里的上下文(父级)是section
+            });
+        });
+    </script>
+</body>
+
+</html>

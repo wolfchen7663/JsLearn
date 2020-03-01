@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象的浅拷贝多种操作方法</title>
+</head>
+
+<body>
+    <script>
+        // 新开辟一个内存地址
+        let old = {
+            name: "chen"
+        };
+        //1
+        let new_obj = {}; 
+        Object.assign(new_obj, old);
+        console.log(new_obj);
+        new_obj.name = "ji";
+        console.log(new_obj);
+
+        //2 
+        let sec_obj = {...old};
+    </script>
+</body>
+
+</html>

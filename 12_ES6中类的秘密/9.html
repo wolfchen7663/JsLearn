@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态属性练习之课程管理类</title>
+</head>
+
+<body>
+    <script>
+        // 静态方法适用于 对所有的对象进行操作
+        const data = [{
+            name: "js",
+            price: 11
+        }, {
+            name: "css",
+            price: 12
+        }, {
+            name: "html",
+            price: 13
+        }];
+
+        class Lesson {
+            constructor(data) {
+                this.model = data;
+            }
+
+            get price() {
+                return this.model.price;
+            }
+            get name() {
+                return this.model.name;
+            }
+            set name(value) {
+                return this.model.name = value;
+            }
+
+            static createBatch(data) {
+                return data.map(item => new Lesson(item));
+            }
+            static maxPrice(data) {
+                return data.sort((a, b) => b.price - a.price)[0].price;
+            }
+            static textTransform(data) {
+                return data.map(item => {
+                    item.name = item.name.toUpperCase();
+                    return item;
+                });
+            }
+            static totalPrice(data) {
+                return data.reduce((total, cur) => total + cur.price, 0);
+            }
+        }
+
+        let l = Lesson.createBatch(data);
+        console.log(l);
+        console.log(Lesson.maxPrice(l));
+        console.log(Lesson.textTransform(l));
+        console.log(Lesson.totalPrice(l));
+    </script>
+</body>
+
+</html>

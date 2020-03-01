@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab 选项卡 加强版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid blue;     */
+        }
+
+        nav {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            /* display: block; */
+            flex-grow: 1;
+            border: 1px solid #000;
+            /* background: yellow; */
+            padding: 3px 10px;
+            text-align: center;
+            font-weight: 900;
+            /* border-radius: 5px; */
+        }
+
+        a:nth-child(2) {
+            /* border-left: none; */
+            background: yellow;
+            margin-left: 5px;
+        }
+
+        section {
+            font-size: 60px;
+            /* border: 1px solid red; */
+            height: 170px;
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            /* text-align: center; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+
+        section:first-of-type {
+            background: yellowgreen;
+        }
+
+        section:last-of-type {
+            background: orangered;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="tab">
+        <nav>
+            <a href="javascript:;">陈卫</a>
+            <a href="javascript:;">季春林</a>
+        </nav>
+        <section>1</section>
+        <section>2</section>
+    </main>
+
+</body>
+<script>
+    // 继承
+    function extend(sub, sup) {
+        sub.prototype = Object.create(sup.prototype);
+        sub.prototype.constructor = sub;
+    }
+    // 选项卡的功能
+    function Animation() {}
+    Animation.prototype.hide = function () {
+        this.style.display = "none";
+    };
+    Animation.prototype.background = function (color) {
+        this.style.backgroundColor = color;
+    };
+    Animation.prototype.show = function () {
+        this.style.display = "block";
+    };
+    Animation.prototype.color = function (color) {
+        this.style.color = color;
+    };
+
+    //查找面板
+    function Tab(args) {
+        // console.log(args);
+        args = Object.assign({
+            elem: null,
+            link: "a",
+            section: "section",
+            callback_my: function () {
+                console.log(`this is the default function`);
+            }
+        }, args);
+        // console.log(JSON.stringify(args, null, 2));
+        this.tab = document.querySelector(args["elem"]);
+        this.links = this.tab.querySelectorAll(args["link"]);
+        this.sections = this.tab.querySelectorAll(args["section"]);
+        this.callback_my = args["callback_my"];
+        // console.log(this.tab);
+    }
+
+    extend(Tab, Animation);
+
+    Tab.prototype.action = function (index) {
+        this.background.call(this.links[index], "red");
+        this.color.call(this.links[index], "#000");
+        this.show.call(this.sections[index]);
+
+    };
+
+    Tab.prototype.reset = function () {
+        this.links.forEach((element, index) => {
+            this.background.call(element, "yellow");
+        })
+        this.sections.forEach((element) => {
+            this.hide.call(element);
+        });
+    };
+    Tab.prototype.bindEvent = function () {
+        this.links.forEach((element, index) => {
+            element.addEventListener("click", () => {
+                // console.log(this);
+                this.reset();
+                this.action(index);
+                this.callback_my();
+            });
+        });
+    };
+
+    Tab.prototype.run = function () {
+        this.bindEvent();
+        this.reset();
+        this.action(0);
+    };
+
+
+    let tab = new Tab({
+        elem: ".tab",
+        // link: "a",
+        // section: "section",
+        callback_my: function () {
+            console.log(`被调用的函数`)
+        }
+    });
+    tab.run();
+
+
+
+    // let tab = document.querySelector(".tab");
+    // Animation.prototype.hide.call(tab);
+</script>
+
+</html>

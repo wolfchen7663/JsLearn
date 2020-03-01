@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>展开语法（点语法）的正确使用</title>
+</head>
+
+<body>
+    <script>
+        // 展开
+        let hd = [1, 3, 4];
+        let [a, b, c] = [...hd];// 在变量的右边是展开
+        // a = 1, b = 2, c = 3
+
+        // 收
+        let [d, ...edu] = [1, 2, 3, 4, 5]; //在变量的左边是收纳
+        // d = 1
+        // edu = [2, 3, 4, 5]
+
+        function sum(discount = 0, ...price) {
+            let total = Math.round(price.reduce((a, b) => a + b));
+            return Math.round(total * (1 - discount));
+        }
+        console.log(sum(.5, 1000, 2222, 33333333));
+    </script>
+</body>
+
+</html>

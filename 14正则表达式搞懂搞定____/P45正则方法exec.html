@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P45正则方法exec</title>
+</head>
+<body>
+    <main>陈卫急急急急急急急急急急急急陈卫斤斤计较大家的发挥</main>
+    <script>
+
+        function countNum(reg, element) {
+            let count = 0;
+            while(res = reg.exec(element.innerHTML)) {
+                count += 1;
+            }
+            return count;
+        }
+        let reg = /急/gi;
+        const main  = document.querySelector("body main");
+        console.log(countNum(reg, main));
+    </script>
+</body>
+</html>

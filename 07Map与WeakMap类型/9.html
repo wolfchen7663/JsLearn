@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用WeakMap开发选课组件</title>
+    <link rel="stylesheet" href="9.css">
+</head>
+
+<body>
+    <main>
+        <section class="lessons">
+            <ul>
+                <li><span>php</span><a href="javascript:;">+</a></li>
+                <li><span>javascript</span><a href="javascript:;">+</a></li>
+                <li><span>html5</span><a href="javascript:;">+</a></li>
+            </ul>
+        </section>
+        <section class="info">
+            <strong id="count">一共选了0门课</strong>
+            <p id="lists"></p>
+        </section>
+    </main>
+
+</body>
+<script>
+    "use strict";
+    class Lesson {
+        constructor() {
+            this.lis = document.querySelectorAll("ul>li");
+            this.count = document.getElementById("count");
+            this.lists = document.getElementById("lists");
+            // 记录选的课程
+            this.selectedLesson = new WeakMap();
+        }
+
+        run() {
+            this.lis.forEach(li => {
+                li.querySelector("a").addEventListener("click", event => {
+                    const a = event.target;
+                    const status = li.getAttribute("select");
+                    if (status) {
+                        li.removeAttribute("select");
+                        this.selectedLesson.delete(li);
+                        a.style.backgroundColor = "green";
+                        a.innerHTML = "+";
+                    } else {
+                        li.setAttribute("select", true);
+                        this.selectedLesson.set(li);
+                        a.style.backgroundColor = "red";
+                        a.innerHTML = "-";
+                    }
+                    this.render();
+                });
+            });
+        }
+        total() {
+            return [...this.lis].reduce((total, li) => {
+                return (total += this.selectedLesson.has(li) ? 1 : 0);
+            }, 0);
+        }
+        showLesson() {
+            return [...this.lis].filter(li => {
+                return this.selectedLesson.has(li);
+            }).map(li => {
+                return `<span>${li.querySelector("span").innerHTML}</span>`;
+            }).join("");
+        }
+        render() {
+            this.count.innerHTML = `一共选了${this.total()}门课`;
+            this.lists.innerHTML = this.showLesson();
+        }
+    }
+    let l = new Lesson();
+    l.run();
+</script>
+
+</html>

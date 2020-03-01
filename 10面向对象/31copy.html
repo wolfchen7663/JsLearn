@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数与class语法糖中使用访问器2</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+
+        class User {
+            constructor(name, age) {
+                this.data = {
+                    name,
+                    age
+                }
+            }
+            set name(value) {
+                if (value.trim() == "" || value.length > 20) {
+                    throw new Error("用户名有误!");
+                } else {
+                    this.data.name = value;
+                }
+            };
+            get name() {
+                return this.data.name;
+            };
+
+            set age(value) {
+                if (value < 18 || value > 100) {
+                    throw new Error("年龄不正确!!");
+                } else {
+                    this.data.age = value;
+                }
+            };
+            get age() {
+                return this.data.age;
+            };
+
+        }
+
+        let man = new User("cen", 18);
+        man.name = "ji";
+        console.log(man.name);
+    </script>
+</body>
+
+</html>

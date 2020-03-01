@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用展开语法完成参数合并</title>
+</head>
+<body>
+    <script>
+        // 对象、数组都可以展开
+        function upload(params) {
+            let config = {
+                type: ".jpg",
+                size: 1000
+            };
+            config = {...config, ...params};
+            console.log(config);
+        }
+        upload({size: 11, type:".png"});
+    </script>
+</body>
+</html>

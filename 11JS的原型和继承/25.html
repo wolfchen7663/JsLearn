@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承是原型的继承</title>
+</head>
+
+<body>
+    <script>
+        // 继承是原型的继承,这很重要
+        function Parent() {
+            name: "user"
+        }
+
+        function Son() {}
+        Son.prototype.__proto__ = Parent.prototype; // *****
+        // Object.setPrototypeOf(Son.prototype, Parent.prototype);
+        // Son.prototype = Object.create(Parent.prototype); // 系统会创建一个新的对象作为原型，并且这个对象指向 Parent.prototype 不建议使用这种方式
+        // 当用这种方式的时候 必须手动添加constructor
+        // Son.prototype.constructor = Son;
+        let son = new Son();
+        console.dir(son);
+    </script>
+</body>
+
+</html>

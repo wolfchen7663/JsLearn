@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象工厂派生对象并实现继承</title>
+</head>
+
+<body>
+    <script>
+        function Father(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        Father.prototype.show = function () {
+            console.log(this.name, this.age);
+        }
+
+        function member(name, age) {
+            const instance = Object.create(Father.prototype);
+            Father.call(instance, name, age);
+            instance.give = function () {
+                console.log("ss");
+            }
+
+            return instance;
+        }
+
+        let cw = member("chen", 12);
+        cw.show();
+        cw.give();
+    </script>
+</body>
+
+</html>

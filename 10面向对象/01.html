@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数编程与面向对象的实例对比</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: "chen",
+            grade: [{
+                cat: "css",
+                score: 11
+            }, {
+                cat: "js",
+                score: 22
+            }],
+            avg() {
+                // let total = this.grade.reduce((t, g) => t + g.score, 0);
+                let total = this.grade.reduce(function(t, g){
+                    return t + g.score;
+                }, 0);
+                return `${this.name}的成绩是:${Math.round(total/this.grade.length)}`;
+            }
+        }
+
+        console.log(user.avg());
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>转义</title>
+</head>
+<body>
+    <script>
+        let price = 999.98888383;
+        // .除了换行符都匹配
+        // let reg = /\d+\.\d+/g;
+        // 使用对象创建需要再转一次义
+        let reg = new RegExp("\\d+\\.\\d+", "g");
+        console.log(reg.test(price));
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延伸函数环境的生命周期</title>
+</head>
+
+<body>
+    <script>
+        function outer() {
+            let i = 1;
+
+            return function border() {
+                console.log("border:" + (i += 1));
+
+                return function inner() {
+                    console.log("inner:" + (i += 1));
+                }
+                // inner();
+            }
+            // border();
+        }
+
+        // outer();
+        // outer();
+        // outer(); // 函数执行一次就会重新开辟一块空间，不会保留以前的记忆
+        // 通过return 之后，情况得以改变
+        let first = outer();
+        // first();
+        // first();
+
+        let sec = outer()(); // 相当于执行了 border()函数
+        sec(); // 相当于执行 inner()函数 
+        sec();
+    </script>
+</body>
+
+</html>

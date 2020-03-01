@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>访问器伪造属性操作</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        const Lessons = {
+            lists: [{
+                name: "js",
+                click: 11
+            }, {
+                name: "css",
+                click: 22
+            }, {
+                name: "php",
+                click: 44
+            }],
+            get total() {
+                return this.lists.reduce((t, l) => t + l.click, 0);
+            }
+        };
+        console.log(Lessons.total);
+    </script>
+</body>
+
+</html>

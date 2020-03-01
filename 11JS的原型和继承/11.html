@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型链总结</title>
+</head>
+
+<body>
+    <script>
+        let parent = {
+            name: "parent",
+            show() {
+                console.log(this.name);
+            },
+            view() {
+                console.log("view");
+            }
+        }
+
+        let son_first = {name: "son_first"};
+        let son_second = {name: "son_second"};
+        Object.setPrototypeOf(son_first, parent); //这里的 parent 就相当于之前的 User.prototype
+        Object.setPrototypeOf(son_second, parent);
+        son_first.show();
+        son_second.show();
+        console.log(son_first.__proto__ == parent); // true 也就是一个对象直接可以作为另一个对象的原型
+        console.log(Object.getPrototypeOf(son_first)); // {name: "parent", show: ƒ, view: ƒ}
+        console.dir(son_first); 
+    </script>
+</body>
+
+</html>

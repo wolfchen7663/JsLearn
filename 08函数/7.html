@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数参数与arguments</title>
+</head>
+<body>
+    <button id="cw">dianji</button>
+    <script>
+        // 函数自身亦可以作为参数
+        function ele() {
+            alert(this.innerHTML);
+        }
+        let button = document.getElementById("cw");
+        button.addEventListener("click", ele);
+
+        
+        //........
+        function sum(...args) {
+            return args.reduce((a, b) => a + b);
+        }
+        let res = sum(1, 3, 4);
+        console.log(res);
+    </script>
+</body>
+</html>

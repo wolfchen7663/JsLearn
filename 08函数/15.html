@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>通过常量改变this的指向</title>
+</head>
+<body>
+    <script>
+        let lessons = {
+            site: "chenwei",
+            lists: ["js", "css", "html"],
+            show: function () {
+                return this.lists.map(function(value) {
+                    return `${this.site}-${value}`;
+                }, this); // map()函数可以将代表对象的this 绑定在普通函数的作用域内
+            }
+        };
+        console.log(lessons.show());
+    </script>
+</body>
+</html>

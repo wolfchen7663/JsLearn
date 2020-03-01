@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeakMap弱引用类型体验</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // WeakMap 会自动进行垃圾回收
+    let hd = {
+        name: "chen"
+    };
+    let cms = hd;
+    let wm = new WeakMap();
+    wm.set(hd, "hello");
+    hd = null;
+    cms = null;
+    console.log(wm);
+    setTimeout(() => {
+        console.log(wm);
+    }, 2000);
+</script>
+
+</html>

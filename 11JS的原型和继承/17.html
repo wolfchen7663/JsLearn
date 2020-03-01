@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM节点借用Array原型方法</title>
+</head>
+<body>
+    <button class="hd">这个教程真的不错</button>
+    <button class="hdd"></button>
+    <script>
+        let arr = [1, 3, 54];
+        let new_arr = arr.filter(item=>item > 50);
+        console.log(new_arr); //[54]
+
+        let btns = document.querySelectorAll("button");
+        // btns = Array.prototype.filter.call(btns, item=>{
+        //     return item.hasAttribute("class");
+        // });
+
+        btns = [].filter.call(btns, item=>{
+            return item.hasAttribute("class");
+        });
+        console.log(btns); //  [button.hd, button.hdd]
+
+
+    </script>
+</body>
+</html>

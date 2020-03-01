@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>排除匹配</title>
+</head>
+
+<body>
+    <!-- <span class="info"><div>ddddddddddd<p>sdwsdsrerfew<span>dsdfetfgrtretetrtretgr<h2>fnuerfhur</h2></span>tf</p></div></span> -->
+    <div><p><h2>ddddd</h2>ppp</p></div>
+    <script>
+        // span = document.querySelector(".info");
+        // console.log(span.innerHTML);
+        // let res = span.innerHTML.match(/<[^<.+>]>/g);
+        // console.log(res);
+        let div = document.querySelector("div").innerHTML;
+        console.log(div.match(/<[^<>]+>/g));
+    </script>
+</body>
+
+</html>

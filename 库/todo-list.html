@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-DO List</title>
+    <link rel="stylesheet" href="todo-list.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <section class="container">
+        <div>houdunren.com<span><i class="fa fa-check" aria-hidden="true"></i></span></div>
+        <div>houdunren.com<span><i class="fa fa-check" aria-hidden="true"></i></span></div>
+        <div>houdunren.com<span><i class="fa fa-check" aria-hidden="true"></i></span></div>
+        <button>恢复</button>
+    </section>
+    <script>
+        class Todo {
+            constructor() {
+                this.items = document.querySelectorAll("div");
+                console.log(this.items);
+                this.lists = new WeakSet();
+                this.items.forEach(item => this.lists.add(item));
+                console.log(this.lists);
+                this.button = document.querySelector("button");
+            }
+            run() {
+                this.addEvent();
+            }
+            recover() {
+                this.recoverDiv();
+            }
+            addEvent() {
+                this.items.forEach(item => {
+                    let span = item.querySelector("span");
+                    span.addEventListener("click", event => {
+                        // Event 接口的只读属性 currentTarget 表示的，标识是当事件沿着 DOM 触发时事件的当前目标。
+                        // 它总是指向事件绑定的元素，而 Event.target 则是事件触发的元素。这里绑定的是 span ，触发的是 i
+                        const parentElement = event.currentTarget.parentElement;
+                        console.log(event.currentTarget.parentElement);
+                        if (this.lists.has(parentElement)) {
+                            parentElement.classList.add("remove");
+                            this.lists.delete(parentElement);
+                        }else {
+                            parentElement.classList.remove("remove");
+                            this.lists.add(parentElement);
+                        }
+                    })
+                });
+            }
+
+            recoverDiv() {
+                this.button.addEventListener("click", event => {
+                    
+                })
+            }
+        }
+        new Todo().run();
+    </script>
+</body>
+
+</html>

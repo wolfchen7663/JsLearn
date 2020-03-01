@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嵌套分组与不记录组</title>
+</head>
+<body>
+    <script>
+        let hd = `
+        https://www.baidu.com
+        http://houdunren.club
+        https://laixiezi.cn`;
+
+        let reg = /https?:\/\/((?:\w+\.)?\w+\.(?:com|cn|club|net))/gi;
+        // (?:) 表示不计入组
+        let urls = [];
+        while(res = reg.exec(hd)) { // exec 将字符串变为可迭代的对象（迭代器）
+            urls.push(res[1]);
+        }
+        console.log(urls);
+    </script>
+</body>
+</html>

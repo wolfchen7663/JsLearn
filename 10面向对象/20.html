@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>面向对象的封装与抽象</title>
+</head>
+<body>
+    <script>
+        //抽象 将内部的一些属性 方法进行封装 只留几个接口给外部调用
+        function User(name, age) {
+            let data = {name, age}; // 将属性抽象起来 外部接触不到
+            let info = function () { // 将方法抽象起来 外部接触不到
+                return data.name;
+            }
+        }
+    </script>
+</body>
+</html>

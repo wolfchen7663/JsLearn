@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构操作的简写形式与变量解构</title>
+</head>
+
+<body>
+    <script>
+        let user = {
+            name: "david",
+            age: 11
+        };
+        let {
+            name: new_name,
+            age: new_age
+        } = user; // 左边是原数据 右边是替代名
+        //简写形式
+        let {
+            name,
+            age
+        } = user;
+        console.log(new_name);
+        // 变量变成对象
+
+        let price = 11;
+        let school = "qh";
+        let man = {
+            price,
+            school
+        };
+        console.log(man);
+    </script>
+</body>
+
+</html>

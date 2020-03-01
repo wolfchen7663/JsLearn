@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多层对象的解构操作</title>
+</head>
+
+<body>
+    <script>
+        let hd = {
+            name: "david",
+            lesson: {
+                title: "learn"
+            }
+        }
+
+        let {
+            name,
+            lesson: {
+                title
+            }
+        } = hd;
+        console.log(name);
+        console.log(title);
+    </script>
+</body>
+
+</html>

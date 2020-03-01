@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方法的重写与父级属性访问</title>
+</head>
+
+<body>
+    <script>
+        function Father() {}
+        Father.prototype.show = function () {
+            console.log("father");
+        }
+
+        Father.prototype.add = function () {
+            return "add";
+        }
+
+        function Son() {}
+        Son.prototype = Object.create(Father.prototype); // 通过create 方式进行继承 这个时候 Son.prototype 是新建的
+        // Son.prototype.constructor = Son; // 这里必须设置constructor
+        // 设置constructor，且 constructor不被遍历
+        Object.defineProperty(Son.prototype, "constructor", {
+            value: Son,
+            enumerable: false,
+        });
+
+        // 重写父级方法
+        Son.prototype.show = function () {
+            // 在子级上，可以直接调用父级的方法
+            console.log(Father.prototype.add() + "son")
+        };
+
+        let son = new Son();
+        son.show();
+    </script>
+</body>
+
+</html>

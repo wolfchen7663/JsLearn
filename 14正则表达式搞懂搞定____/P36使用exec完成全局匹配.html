@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P36使用exec完成全局匹配</title>
+</head>
+<body>
+    <script>
+        let hd = "houdunren";
+        let reg = /u/ig;
+        let result = [];
+        while((res =  reg.exec(hd))) {
+            result.push(res);
+        }
+        console.log(result);
+    </script>
+</body>
+</html>

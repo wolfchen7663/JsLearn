@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单验证</title>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" validate rule="max:12, min:3">
+    <input type="text" validate rule="max:3, isNumber">
+    <script>
+        "use strict"
+        class Validate {
+            max(value, len) {
+                return value.length < len;
+            }
+            min(value, len) {
+                return value.length > len;
+            }
+            isNumber(value) {
+                return /^\d+$/g.test(value);
+            }
+        }
+
+        function ProxyFactory(target) {
+            return new Proxy(target, {
+                get(target, key) {
+                    return target[key];
+                },
+                set(target, key, elem) {
+                    // console.log(key);
+                    // console.log(elem);
+                    const rule = elem.getAttribute("rule");
+                    // console.log(rule);
+                    let validate = new Validate();
+                    let state = rule.split(",").every(function (rule) {
+                        const info = rule.split(":");
+                        // console.log(info);
+                        // console.log(validate[info[0]]);
+                        // console.log(validate[info[0]]);
+                        return validate[info[0]](elem.value, info[1]);
+                    });
+                    elem.classList[state ? "remove" : "add"]("error");
+                    // console.log(state);
+
+                    return true;
+                }
+            });
+        }
+        let inputs = document.querySelectorAll("[validate]");
+        const proxy = ProxyFactory(inputs);
+        console.log(proxy); //  {0: input, 1: input}
+        proxy.forEach((item, i) => {
+            item.addEventListener("keyup", function () {
+                proxy[i] = this;
+            });
+        });
+    </script>
+</body>
+
+</html>
