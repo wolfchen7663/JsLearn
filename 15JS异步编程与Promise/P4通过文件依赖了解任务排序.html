@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P4通过文件依赖了解任务排序</title>
+</head>
+
+<body>
+    <script>
+        // 任务是先进入先执行
+        // 有依赖关系的更需要注意顺序
+        function load(src, resolve, reject) {
+            let script = document.createElement("script");
+            script.src = src;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.body.appendChild(script);
+        }
+
+        load("./js/father.js", () => {
+            father();
+            load("./js/son.js", () => {
+                son();
+            }, () => {
+                console.log("something goes wrong");
+            });
+        }, () => {
+            console.log("something goes wrong");
+        });
+        console.log("i am running first");
+    </script>
+</body>
+
+</html>
