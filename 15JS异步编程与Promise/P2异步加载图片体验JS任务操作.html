@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2异步加载图片体验JS任务操作</title>
+</head>
+<body>
+    <script>
+        function imageLoad(src, resolve, reject) {
+            let img = new Image();
+            img.src = src;
+            img.onload = ()=>{
+                resolve(img);
+            };
+            img.onerror = reject;
+        }
+
+        imageLoad("./load.jpg", (image)=>{
+            document.body.appendChild(image);
+        }, ()=>{
+            console.log("image load error");
+        });
+
+        console.log("main thread success");
+
+    </script>
+</body>
+</html>
