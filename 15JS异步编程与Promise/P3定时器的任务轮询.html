@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P3定时器的任务轮询</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        function interval(callback, delay = 100) {
+            let id = setInterval(() => callback(id), delay);
+        }
+        interval(timeId => {
+            const div = document.querySelector("div");
+            const divLeft = window.getComputedStyle(div).left.slice(0, -2) * 1; // 获取离左边界的距离
+            div.style.left = divLeft + 10 + "px";
+            if (divLeft >= 300) {
+                clearInterval(timeId);
+                interval(timeId => {
+                    const divWidth = window.getComputedStyle(div).width.slice(0, -2) * 1; // 获取元素的宽度
+                    div.style.width = divWidth - 10 + "px";
+                    if (divWidth<=20) {
+                        clearInterval(timeId);
+                    }
+                })
+            }
+        });
+        console.log("主任务(主线程)优先级最高");
+    </script>
+</body>
+
+</html>
