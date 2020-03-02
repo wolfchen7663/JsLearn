@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P6Promise微任务处理机制</title>
+</head>
+
+<body>
+    <script>
+        // 当 new 一个 Promise()的时候 这个时候的状态是 pending
+        // resolve 成功状态
+        // reject 失败状态
+        new Promise((resolve, reject) => {
+            resolve(); // 一旦状态确定，状态就不会改变
+            // reject()  此时reject 无效
+        }).then(value => { // 如果是resolve 则调用value
+            console.log("success");
+        }, reason => { // 如果是reject,则调用reason
+            console.log("wrong");
+        });
+    </script>
+</body>
+
+</html>
