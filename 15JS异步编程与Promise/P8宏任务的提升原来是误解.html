@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P8宏任务的提升原来是误解</title>
+</head>
+<body>
+    <script>
+        let promise = new Promise(resolve=>{
+            setTimeout(() => { // 当主线程解决完宏任务里的setTimeout时，才会去微任务抓取任务
+                resolve(); // 生成一个微任务
+                console.log("setTimeout");
+            }, 0);
+            console.log("promise");
+        }).then(value=>{// 微任务执行
+            console.log("success");
+        });
+        console.log("i am the king");
+        // promise
+        // i am the king
+        // setTimeout
+        // success
+
+    </script>
+</body>
+</html>
