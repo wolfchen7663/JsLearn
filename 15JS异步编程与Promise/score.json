@@ -1,0 +1,12 @@
+{
+    "score":[
+        {
+            "id":1,
+            "user_score": 100
+        },
+        {
+            "id":2,
+            "user_score": 200
+        }
+    ]
+}

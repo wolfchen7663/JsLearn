@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P5ajax异步请求任务管理</title>
 </head>
+
 <body>
+    <script src="./ajax.js">
+    </script>
     <script>
-        
+        ajax("http://localhost:3001/name/1", item => {
+            // console.log(item["user_name"]);
+            let div = document.createElement("div");
+            div.innerHTML = `The Selected Name is <strong>${item["user_name"]}</strong>`;
+            document.body.appendChild(div);
+            user_id = item["id"];
+            ajax("http://localhost:3000/score/1", item => {
+                if (user_id == item["id"]) {
+                    let div = document.createElement("div");
+                    div.innerHTML = `The Selected Score is <strong>${item["user_score"]}</strong>`;
+                    document.body.appendChild(div);
+                }
+            });
+        });
+        console.log("i am the main");
     </script>
 </body>
+
 </html>
