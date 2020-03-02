@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P7宏任务与微任务执行顺序</title>
-</head>
+   </head>
 
-<body>
+  <body>
     <script>
-        // 宏任务
-        setTimeout(() => {
-            console.log("setTimeout");
-        }, 0);
-        new Promise(resolve => {
-            resolve(); //当 new Promise 的状态改变时，就会把任务放在微任务，等待(主线程)同步任务执行完，来执行微任务队列里的任务
-            console.log("promise"); // 同步任务
-        }).then(value => {
-            console.log("success"); //微任务
-        });
-        console.log("i am the king"); // 同步任务
+      // 宏任务
+      setTimeout(() => {
+        console.log("setTimeout");
+      }, 0);
+      new Promise(resolve => {
+        resolve(); //当 new Promise 的状态改变时，就会把任务放在微任务，等待(主线程)同步任务执行完，来执行微任务队列里的任务
+        console.log("promise"); // 同步任务
+      }).then(value => {
+        console.log("success"); //微任务
+      });
+      console.log("i am the king"); // 同步任务
 
-        /*
+      /*
         promise
         i am the king
         success
         setTimeout
         */
     </script>
-</body>
-
+  </body>
 </html>

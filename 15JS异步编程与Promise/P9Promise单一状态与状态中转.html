@@ -1,36 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P9Promise单一状态与状态中转</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        let p1 = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve("full");
-                console.log("first");
-            }, 200);
-
-        });
-        // promise 状态一经改变，就没法撤销
-        new Promise((resolve, reject) => {
-            resolve(p1);
-            console.log("second");
-            reject("fail") // 这里无效
-        }).then(
-            msg => {
-                console.log(msg);
-            },
-            error => {
-                console.log(error);
-            }
-        );
-        console.log("king");
+      let p1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("full");
+          console.log("first");
+        }, 200);
+      });
+      // promise 状态一经改变，就没法撤销
+      new Promise((resolve, reject) => {
+        resolve(p1);
+        console.log("second");
+        reject("fail"); // 这里无效
+      }).then(
+        msg => {
+          console.log(msg);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      console.log("king");
     </script>
-</body>
-
+  </body>
 </html>

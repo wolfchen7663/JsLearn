@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>P49使用断言模糊电话号</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        let phone = `陈卫电话:15195896217
+      let phone = `陈卫电话:15195896217
         公司电话:18852301825`;
-        let reg = /(?<=\d{7})\d{4}/gi;
-        phone = phone.replace(reg, "*".repeat(4));
-        console.log(phone);
-        
+      let reg = /(?<=\d{7})\d{4}/gi;
+      phone = phone.replace(reg, "*".repeat(4));
+      console.log(phone);
     </script>
-</body>
-
+  </body>
 </html>
