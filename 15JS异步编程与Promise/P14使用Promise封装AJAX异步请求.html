@@ -6,6 +6,14 @@
     <title>P14使用Promise封装AJAX异步请求</title>
   </head>
   <body>
-      
+    <script src="./ajax.js"></script>
+    <script>
+      ajax("http://localhost:3000/name/1").then(user => {
+          console.log(user);
+       return ajax(`http://localhost:3100/score/${user["id"]}`)
+      }).then(score=>{
+          console.log(score);
+      });
+    </script>
   </body>
 </html>
