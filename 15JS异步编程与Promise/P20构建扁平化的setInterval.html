@@ -23,15 +23,35 @@
   <body>
     <div></div>
     <script>
-      function interval(delay = 1000) {
+      function interval(delay = 1000, callback) {
         return new Promise(resolve => {
-            
           let id = setInterval(() => {
-            resolve(div);
+            callback(id, resolve);
           }, delay);
         });
       }
-      interval(2000).then(div => {});
+      interval(200, (timeId, resolve) => {
+        const div = document.querySelector("div");
+        divLeft = window.getComputedStyle(div).left.slice(0, -2) * 1;
+        div.style.left = divLeft + 10 + "px";
+        if (divLeft >= 200) {
+          clearInterval(timeId);
+          resolve(div);
+        }
+      })
+        .then(div => {
+          return interval(200, (timeId, resolve) => {
+            divWidth = window.getComputedStyle(div).width.slice(0, -2) * 1;
+            div.style.width = divWidth - 10 + "px";
+            if (divWidth <= 20) {
+              clearInterval(timeId);
+              resolve(div);
+            }
+          });
+        })
+        .then(div => {
+          div.style.backgroundColor = "red";
+        });
     </script>
   </body>
 </html>
