@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P27Promise队列原理</title>
+  </head>
+  <body>
+    <script>
+      let promise = Promise.resolve("chen");
+      promise
+        .then(value => {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              console.log(1);
+            }, 1000);
+          });
+        })
+        .then(value => {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              console.log(2);
+            }, 2000);
+          });
+        });
+    </script>
+  </body>
+</html>

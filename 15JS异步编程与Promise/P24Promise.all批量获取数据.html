@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P24Promise.all批量获取数据</title>
+  </head>
+  <body>
+    <script src="ajax.js"></script>
+    <script>
+      function getUsers(names) {
+        let promises = names.map(name => {
+          return ajax(`http://localhost:3000/name`);
+        });
+        return Promise.all(promises);
+      }
+
+      getUsers(["chen"]).then(users=>{
+          console.log(users);
+      })
+    </script>
+  </body>
+</html>

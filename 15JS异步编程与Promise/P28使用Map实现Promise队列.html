@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P28使用Map实现Promise队列</title>
+  </head>
+  <body>
+    <script>
+      function query(num) {
+        let promise = Promise.resolve();
+        num.map(v => {
+          promise = promise.then(_ => {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                console.log(v);
+                resolve();
+              }, 2000);
+            });
+          });
+        });
+      }
+
+      query([1, 2, 3, 5, 6]);
+    </script>
+  </body>
+</html>

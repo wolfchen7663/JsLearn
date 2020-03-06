@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P25Promise.allSettled使用</title>
+  </head>
+  <body>
+    <script src="ajax.js"></script>
+    <script>
+      let promises = ["chen", "li"].map(name => {
+        return ajax(`http://localhost:3000/name`);
+      });
+
+      Promise.allSettled(promises).then(values => {
+        let users = values.filter(user => {
+          return user.status == "fulfilled";
+        });
+        console.log(users);
+      });
+    </script>
+  </body>
+</html>
