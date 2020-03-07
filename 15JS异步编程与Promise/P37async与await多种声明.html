@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P37async与await多种声明</title>
+  </head>
+  <body>
+    <script src="ajax.js"></script>
+    <script>
+      class User {
+        async get(name) {
+          return await ajax(`http://localhost:3000/name/1?user_name=${name}`);
+        }
+      }
+      new User().get("a").then(user=>{
+          console.log(user);
+      })
+    </script>
+  </body>
+</html>

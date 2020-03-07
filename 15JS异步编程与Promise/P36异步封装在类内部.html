@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P36异步封装在类内部</title>
+  </head>
+  <body>
+    <script src="ajax.js"></script>
+    <script>
+      class User {
+        async get(name) {
+          let user = await ajax(`http://localhost:3000/name/1?user_name=${name}`);
+          user.user_name += "-handsome";
+          return user;
+        }
+      }
+      new User().get("a").then(user => {
+        console.log(user);
+      });
+    </script>
+  </body>
+</html>

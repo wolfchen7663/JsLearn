@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P34await制作加载进度条</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        background: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      div {
+        width: 400px;
+        height: 100px;
+        background: red;
+        color: white;
+        font-weight: 900;
+        font-size: 4em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 10px 0 10px rgba(0, 0, 0, 0.5);
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading">0%</div>
+    <script src="ajax.js"></script>
+    <script>
+      function get(name) {
+        return ajax(`http://localhost:3000/name?user_name=${name}`);
+      }
+      async function loadUser(users) {
+        let loading = document.querySelector(".loading");
+        for (let i = 0; i < users.length; i += 1) {
+          let user = await get(users[i]);
+
+          loading.style.width = ((i + 1) / users.length) * 100 + "%";
+          loading.innerHTML = ((i + 1) / users.length) * 100 + "%";
+        }
+      }
+      loadUser(["a", "b", "c"]);
+    </script>
+  </body>
+</html>

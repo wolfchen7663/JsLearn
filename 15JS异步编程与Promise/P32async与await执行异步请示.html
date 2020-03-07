@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P32async与await执行异步请示</title>
+</head>
+<body>
+    <script src="ajax.js"></script>
+    <script>
+        async function get(name){
+            let user = await ajax(`http://localhost:3000/name/1?user_name=name`);
+            let score = await ajax(`http://localhost:3001/score/1?id=${user["id"]}`);
+            console.log(score["user_score"]);
+        }
+    get("chen");
+    </script>
+</body>
+</html>

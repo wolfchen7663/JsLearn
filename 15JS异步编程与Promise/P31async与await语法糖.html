@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P31async与await语法糖</title>
+  </head>
+  <body>
+    <script>
+      async function hd() {
+        let name = await new Promise(resolve => {
+          setTimeout(() => {
+            resolve("first");
+          }, 1000);
+        });
+
+        let site = await new Promise(resolve => {
+          setTimeout(() => {
+            resolve("second");
+          }, 1000);
+        });
+
+        console.log(name, site);
+      }
+
+      hd();
+    </script>
+  </body>
+</html>
