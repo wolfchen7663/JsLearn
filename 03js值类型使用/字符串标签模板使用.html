@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    "use strict";
+    let lessons = [
+      { title: "html", author: "chen" },
+      { title: "JavaScript", author: "li" },
+      { title: "php", author: "wei" }
+    ];
+    function template() {
+      return `<ul>
+          ${lessons
+            .map(item => {
+              return links`<li>标题:${item.title},作者:${item.author}</li>`;
+            })
+            .join("")}
+      </ul>`;
+    }
+    document.body.innerHTML += template();
+
+    function links(strings, ...vars) {
+      return strings.map((str, key) => {
+        return str + (vars[key] ? vars[key].replace("chen",`<a href="www.baidu.com">hello</a>` ) : "");
+      });
+    }
+  </script>
+</html>
